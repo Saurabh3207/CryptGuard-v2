@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
+import Landing from '../pages/Landing';
 import Home from '../pages/Home';
 import Vault from '../pages/Vault';
 import HelpSupport from '../components/HelpSupport';
@@ -9,7 +10,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/login" replace />,
+    element: <Landing />,
   },
   {
     path: "/register",
