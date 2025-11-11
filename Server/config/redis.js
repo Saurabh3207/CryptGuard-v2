@@ -1,8 +1,7 @@
-const Redis = require('ioredis');
-const { REDIS_URL } = require('./serverConfig');
+ const Redis = require('ioredis');
 
 // Create Redis client for Upstash
-const redis = new Redis(REDIS_URL, {
+const redis = new Redis(process.env.REDIS_URL, {
   maxRetriesPerRequest: 3,
   enableReadyCheck: true,
   connectTimeout: 10000,

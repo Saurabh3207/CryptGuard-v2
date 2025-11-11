@@ -1,12 +1,11 @@
 const { Pool } = require('pg');
-const { DATABASE_URL } = require('./serverConfig');
 
 // Create PostgreSQL connection pool
 const pool = new Pool({
-  connectionString: DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false, // Required for Supabase
-  },
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? {
+    rejectUnauthorized: false, // Required for cloud providers
+  } : false, // No SSL for local development
   max: 20, // Maximum number of clients in the pool
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
