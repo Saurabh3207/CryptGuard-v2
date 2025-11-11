@@ -1,5 +1,5 @@
 import React from "react";
-import { useWeb3Context } from "../contexts/useWeb3Context";
+import { useAuth } from "../contexts/AuthContext";
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import UploadFile from "../components/UploadFile";
 import WalletStatusCard from "../components/ui/WalletStatusCard";
@@ -22,7 +22,7 @@ import {
 import { MdDashboard, MdSettings } from "react-icons/md";
 
 const Home = () => {
-  const { web3State, updateWeb3State } = useWeb3Context();
+  const { web3State, updateWeb3State } = useAuth();
   const { selectedAccount } = web3State;
   const location = useLocation();
   const navigate = useNavigate();

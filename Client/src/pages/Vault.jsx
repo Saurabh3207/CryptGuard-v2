@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useWeb3Context } from "../contexts/useWeb3Context";
+import { useAuth } from "../contexts/AuthContext";
 import axios from "axios";
 import {
   FaDownload,
@@ -40,7 +40,7 @@ const getFileExtensionLabel = (fileName) => {
 };
 
 const Vault = () => {
-  const { web3State } = useWeb3Context();
+  const { web3State } = useAuth();
   const { selectedAccount, contractInstance } = web3State;
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);

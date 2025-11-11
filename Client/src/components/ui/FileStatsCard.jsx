@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { FaFolderOpen, FaHdd, FaShieldAlt } from "react-icons/fa"; // ✅ Correct icons from fa
-import { useWeb3Context } from "../../contexts/useWeb3Context";
+import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 import CountUp from "react-countup";
 
 const FileStatsCard = () => {
-  const { web3State } = useWeb3Context();
+  const { web3State } = useAuth();
   const { selectedAccount } = web3State;
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState([]);

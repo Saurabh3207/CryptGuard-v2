@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
-import { useWeb3Context } from "../contexts/useWeb3Context";
+import { useAuth } from "../contexts/AuthContext";
 import logger from "../utils/logger";
 
 const UploadFile = () => {
@@ -12,7 +12,7 @@ const UploadFile = () => {
   const [progress, setProgress] = useState(0);
   const [dragOver, setDragOver] = useState(false);
 
-  const { web3State } = useWeb3Context();
+  const { web3State } = useAuth();
   const { selectedAccount, contractInstance } = web3State;
 
   const getFileHash = async (file) => {

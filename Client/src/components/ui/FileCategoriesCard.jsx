@@ -10,7 +10,7 @@ import {
   FaFileCode,
   FaFile,
 } from "react-icons/fa";
-import { useWeb3Context } from "../../contexts/useWeb3Context";
+import { useAuth } from "../../contexts/AuthContext";
 import axios from "axios";
 
 const baseCategories = [
@@ -45,7 +45,7 @@ const baseCategories = [
 ];
 
 const FileCategoriesCard = () => {
-  const { web3State } = useWeb3Context();
+  const { web3State } = useAuth();
   const { selectedAccount } = web3State;
   const [categories, setCategories] = useState(
     baseCategories.map((cat) => ({ ...cat, count: 0 }))

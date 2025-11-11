@@ -7,7 +7,7 @@ import {
   FaDownload,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import { useWeb3Context } from "../../contexts/useWeb3Context";
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -22,7 +22,7 @@ const iconMap = {
 };
 
 const RecentUploadsCard = () => {
-  const { web3State } = useWeb3Context();
+  const { web3State } = useAuth();
   const { selectedAccount, contractInstance } = web3State;
   const [loading, setLoading] = useState(true);
   const [files, setFiles] = useState([]);
