@@ -24,7 +24,22 @@ app.get('/health', (req, res) => {
   });
 });
 
-// API routes will be added here
+// Import routes
+const authRoutes = require('./routes/authRoutes');
+
+// API routes
+app.use('/api/auth', authRoutes);
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    error: {
+      code: 'NOT_FOUND',
+      message: 'Endpoint not found'
+    }
+  });
+});
 
 // Error handler
 app.use((err, req, res, next) => {
