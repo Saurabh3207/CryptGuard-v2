@@ -14,6 +14,7 @@ CREATE TABLE users (
     mfa_enabled BOOLEAN DEFAULT FALSE,
     mfa_secret VARCHAR(255),
     mfa_backup_codes TEXT[],
+    master_key_encrypted TEXT,
     email_verified BOOLEAN DEFAULT FALSE,
     last_login_at TIMESTAMP WITH TIME ZONE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
