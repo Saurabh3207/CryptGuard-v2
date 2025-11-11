@@ -1,32 +1,45 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-import Wallet from '../pages/Wallet';
 import Home from '../pages/Home';
 import Vault from '../pages/Vault';
-import HelpSupport from '../components/HelpSupport'; 
+import HelpSupport from '../components/HelpSupport';
+import Register from '../pages/Auth/Register';
+import Login from '../pages/Auth/Login';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Wallet />,
-  },
-
-  {
-    path: "/wallet",
-    element: <Navigate to="/" replace />,
+    element: <Navigate to="/login" replace />,
   },
   {
-    path: "/home",
-    element: <Home />,
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    element: <ProtectedRoute />,
     children: [
       {
-        path: "vault",
-        element: <Vault />,
+        path: "/home",
+        element: <Home />,
+        children: [
+          {
+            path: "vault",
+            element: <Vault />,
+          },
+          {
+            path: "support",
+            element: <HelpSupport />,
+          },
+        ],
       },
       {
-        path: "support",  
-        element: <HelpSupport />,
+        path: "/vault",
+        element: <Navigate to="/home/vault" replace />,
       },
-   
     ],
   },
 ]);
